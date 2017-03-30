@@ -14,36 +14,60 @@ if (!is_null($events['events'])) {
 
 			// $event['message']['text'] = $_SERVER['SERVER_NAME'];
 			
-			$getMessage = $event['message']['text'];
+			$getMessage = $event['message']['text'];			
 
-			if (!filter_var($getMessage, FILTER_VALIDATE_URL) === false) {
-				function availableUrl($host, $port=80, $timeout=10) {
+			if (!filter_var($getMessage, FILTER_VALIDATE_IP) === false 
+				|| filter_var_domain($getMessage) ) {
 
-				  $fp = fSockOpen($host, $port, $errno, $errstr, $timeout); 
-				  return $fp!=false;
-				}
+				    function availableUrl($host, $port=80, $timeout=10) {
 
-				//Return "true" if the url is available, false if not.
-				try {
-				        $result = availableUrl($getMessage);
-				} catch (Exception $e) {
-				        
-				}
+					  $fp = fSockOpen($host, $port, $errno, $errstr, $timeout); 
+					  return $fp!=false;
+					}
 
-				if ($result == true) {
-						$setMessage = 
-						"Link is UP"."\r\n".
-						"Your Domain is : ".$getMessage."\r\n".
-						"Your IP Address is : ".gethostbyname($getMessage);
-				} else {
-						$setMessage = 
-						"Link is Down"."\r\n".
-						"Your Domain is : ".$getMessage."\r\n".
-						"Your IP Address is : ".gethostbyname($getMessage);
-				}				
+					//Return "true" if the url is available, false if not.
+					try {
+					        $result = availableUrl($getMessage);
+					} catch (Exception $e) {
+					        
+					}
+
+					if ($result == true) {
+							$setMessage = 
+							"Link is UP"."\r\n".
+							"Your Domain is : ".$getMessage."\r\n".
+							"Your IP Address is : ".gethostbyname($getMessage);
+					} else {
+							$setMessage = 
+							"Link is Down"."\r\n".
+							"Your Domain is : ".$getMessage."\r\n".
+							"Your IP Address is : ".gethostbyname($getMessage);
+					}
+
 			} else {
 			    $setMessage = "ว่าไง ต้องการอะไร";
-			}			
+			}
+
+			function filter_var_domain($domain) {
+			    if(stripos($domain, 'http://') === 0)
+			    {
+			        $domain = substr($domain, 7); 
+			    }
+			     
+			    ///Not even a single . this will eliminate things like abcd, since http://abcd is reported valid
+			    if(!substr_count($domain, '.'))
+			    {
+			        return false;
+			    }
+			     
+			    if(stripos($domain, 'www.') === 0)
+			    {
+			        $domain = substr($domain, 4); 
+			    }
+			     
+			    $again = 'http://' . $domain;
+			    return filter_var ($again, FILTER_VALIDATE_URL);
+			}
 
 			$event['message']['text'] = $setMessage;
 

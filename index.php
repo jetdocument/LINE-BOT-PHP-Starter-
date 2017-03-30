@@ -35,12 +35,12 @@ if (!is_null($events['events'])) {
 
 				if ($result == true) {
 						$setMessage = 
-						"Domain is UP"."\r\n".
+						"Link is UP"."\r\n".
 						"Your Domain is : ".$getMessage."\r\n".
 						"Your IP Address is : ".gethostbyname($getMessage);
 				} else {
 						$setMessage = 
-						"Domain is Down"."\r\n".
+						"Link is Down"."\r\n".
 						"Your Domain is : ".$getMessage."\r\n".
 						"Your IP Address is : ".gethostbyname($getMessage);
 				}				

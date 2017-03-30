@@ -17,9 +17,34 @@ if (!is_null($events['events'])) {
 			
 			$getMessage = $event['message']['text'];
 
-			$setMessage = 
-				"Your Domain is : ".$getMessage."\r\n".
-				"Your IP Address is : ".gethostbyname($getMessage);
+			if ($getMessage == "ว่าไง") {
+				$setMessage = "ต้องการอะไร";
+			} else {
+				function availableUrl($host, $port=80, $timeout=10) {
+
+				  $fp = fSockOpen($host, $port, $errno, $errstr, $timeout); 
+				  return $fp!=false;
+				}
+
+				//Return "true" if the url is available, false if not.
+				try {
+				        $result = availableUrl($getMessage);
+				} catch (Exception $e) {
+				        
+				}
+
+				if ($result == true) {
+						$setMessage = 
+						"Domain is UP"."\r\n".
+						"Your Domain is : ".$getMessage."\r\n".
+						"Your IP Address is : ".gethostbyname($getMessage);
+				} else {
+						$setMessage = 
+						"Domain is Down"."\r\n".
+						"Your Domain is : ".$getMessage."\r\n".
+						"Your IP Address is : ".gethostbyname($getMessage);
+				}				
+			}
 
 			$event['message']['text'] = $setMessage;
 
@@ -56,6 +81,7 @@ if (!is_null($events['events'])) {
 			$response = $bot->pushMessage('Ua19821cd93141008d26221f16381d256', $textMessageBuilder);
 
 			echo $result . "\r\n";
+
 		}
 	}
 }

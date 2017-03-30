@@ -14,7 +14,7 @@ if (!is_null($events['events'])) {
 
 			$today = getdate();
 
-			$event['message']['text'] = $today;
+			$event['message']['text'] = $today['weekday'];
 
 			// Get text sent
 			$text = $event['message']['text'];

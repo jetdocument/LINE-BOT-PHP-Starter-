@@ -15,9 +15,13 @@ if (!is_null($events['events'])) {
 			// $event['message']['text'] = $_SERVER['SERVER_NAME'];
 
 			
-			$www = $event['message']['text'];
+			$getMessage = $event['message']['text'];
 
-			$event['message']['text'] = gethostbyname($www);
+			$setMessage = 
+				"Your Domain is : ".$getMessage."\r\n".
+				"Your IP Address is : ".gethostbyname($getMessage);
+
+			$event['message']['text'] = $setMessage;
 
 			// Get text sent
 			$text = $event['message']['text'];

@@ -40,6 +40,9 @@ if (!is_null($events['events'])) {
 			$result = curl_exec($ch);
 			curl_close($ch);
 
+			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+			$response = $bot->pushMessage('Ua19821cd93141008d26221f16381d256', $textMessageBuilder);
+
 			echo $result . "\r\n";
 		}
 	}

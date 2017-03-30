@@ -13,11 +13,10 @@ if (!is_null($events['events'])) {
 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
 	$response = $bot->pushMessage('Ua19821cd93141008d26221f16381d256', $textMessageBuilder);
 
-	echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+	echo $response->getHTTPStatus() . 'Something' . $response->getRawBody();
 
 
 }
 echo "Ready";
-
 
 ?>

@@ -13,60 +13,37 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
 			// $event['message']['text'] = $_SERVER['SERVER_NAME'];
+
 			
-			$getMessage = $event['message']['text'];			
+			$getMessage = $event['message']['text'];
 
-			if (!filter_var($getMessage, FILTER_VALIDATE_IP) === false 
-				|| filter_var_domain($getMessage) ) {
-
-				    function availableUrl($host, $port=80, $timeout=10) {
-
-					  $fp = fSockOpen($host, $port, $errno, $errstr, $timeout); 
-					  return $fp!=false;
-					}
-
-					//Return "true" if the url is available, false if not.
-					try {
-					        $result = availableUrl($getMessage);
-					} catch (Exception $e) {
-					        
-					}
-
-					if ($result == true) {
-							$setMessage = 
-							"Link is UP"."\r\n".
-							"Your Domain is : ".$getMessage."\r\n".
-							"Your IP Address is : ".gethostbyname($getMessage);
-					} else {
-							$setMessage = 
-							"Link is Down"."\r\n".
-							"Your Domain is : ".$getMessage."\r\n".
-							"Your IP Address is : ".gethostbyname($getMessage);
-					}
-
+			if ($getMessage == "ว่าไง") {
+				$setMessage = "ต้องการอะไร";
 			} else {
-			    $setMessage = "ว่าไง ต้องการอะไร";
-			}
+				function availableUrl($host, $port=80, $timeout=10) {
 
-			function filter_var_domain($domain) {
-			    if(stripos($domain, 'http://') === 0)
-			    {
-			        $domain = substr($domain, 7); 
-			    }
-			     
-			    ///Not even a single . this will eliminate things like abcd, since http://abcd is reported valid
-			    if(!substr_count($domain, '.'))
-			    {
-			        return false;
-			    }
-			     
-			    if(stripos($domain, 'www.') === 0)
-			    {
-			        $domain = substr($domain, 4); 
-			    }
-			     
-			    $again = 'http://' . $domain;
-			    return filter_var ($again, FILTER_VALIDATE_URL);
+				  $fp = fSockOpen($host, $port, $errno, $errstr, $timeout); 
+				  return $fp!=false;
+				}
+
+				//Return "true" if the url is available, false if not.
+				try {
+				        $result = availableUrl($getMessage);
+				} catch (Exception $e) {
+				        
+				}
+
+				if ($result == true) {
+						$setMessage = 
+						"Link is UP"."\r\n".
+						"Your Domain is : ".$getMessage."\r\n".
+						"Your IP Address is : ".gethostbyname($getMessage);
+				} else {
+						$setMessage = 
+						"Link is Down"."\r\n".
+						"Your Domain is : ".$getMessage."\r\n".
+						"Your IP Address is : ".gethostbyname($getMessage);
+				}				
 			}
 
 			$event['message']['text'] = $setMessage;

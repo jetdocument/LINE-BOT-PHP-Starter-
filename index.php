@@ -13,13 +13,10 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
 			// $event['message']['text'] = $_SERVER['SERVER_NAME'];
-
 			
 			$getMessage = $event['message']['text'];
 
-			if ($getMessage == "ว่าไง") {
-				$setMessage = "ต้องการอะไร";
-			} else {
+			if (!filter_var($getMessage, FILTER_VALIDATE_URL) === false) {
 				function availableUrl($host, $port=80, $timeout=10) {
 
 				  $fp = fSockOpen($host, $port, $errno, $errstr, $timeout); 
@@ -44,7 +41,9 @@ if (!is_null($events['events'])) {
 						"Your Domain is : ".$getMessage."\r\n".
 						"Your IP Address is : ".gethostbyname($getMessage);
 				}				
-			}
+			} else {
+			    $setMessage = "ว่าไง ต้องการอะไร";
+			}			
 
 			$event['message']['text'] = $setMessage;
 

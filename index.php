@@ -44,7 +44,7 @@ if (!is_null($events['events'])) {
 
 			$www = $event['message']['text'];
 
-			$event['message']['text'] = validate_ip($www);
+			$event['message']['text'] = get_ip_address($www);
 
 			// Get text sent
 			$text = $event['message']['text'];

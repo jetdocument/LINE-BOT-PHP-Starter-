@@ -42,7 +42,9 @@ if (!is_null($events['events'])) {
 			    return true;
 			}
 
-			$event['message']['text'] = validate_ip('www.google.com');
+			$www = $event['message']['text'];
+
+			$event['message']['text'] = validate_ip($www);
 
 			// Get text sent
 			$text = $event['message']['text'];

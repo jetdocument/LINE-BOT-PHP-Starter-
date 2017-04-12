@@ -112,4 +112,3 @@ class BOT_API extends LINEBot {
 	
 }
 
-echo "OK!";

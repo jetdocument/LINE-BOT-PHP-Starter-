@@ -1,6 +1,7 @@
 <?php
 
 <?php
+echo "Something";
 include ('bot.php');
 echo "Something";
 $channelSecret = '41a0536c6ac1d4202c8a7c867728c933';

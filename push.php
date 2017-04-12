@@ -1,6 +1,4 @@
 <?php
-
-<?php
 echo "Something";
 include ('bot.php');
 echo "Something";

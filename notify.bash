@@ -1,10 +1,10 @@
-ping -q -c5 192.168.1.129 > /dev/null
+ping -q -c2 google.com
  
 if [ $? -eq 0 ]
 then
-	echo "OK!" >/dev/console
+	echo "OK!" >/var/www/html/LINE-BOT-PHP-Starter-/log
 else
-	echo "Not Work!" >/dev/console
+	echo "Not Work!" >/var/www/html/LINE-BOT-PHP-Starter-/log
 fi
 
 

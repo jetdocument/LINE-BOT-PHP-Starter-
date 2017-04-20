@@ -19,7 +19,7 @@ if (!empty($bot->isEvents)) {
 	// Failed
 	echo $bot->response->getHTTPStatus . ' ' . $bot->response->getRawBody(); 
 	exit();
-
 }
+echo json_encode($bot->events);
 
 ?>

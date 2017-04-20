@@ -7,6 +7,8 @@
 #	echo "Not Work!" >/var/www/html/LINE-BOT-PHP-Starter-/log
 #fi
 
-echo "It's work" >log
+echo "It's work" >>log
+echo "first" >log
+echo "last" >>log
 
 

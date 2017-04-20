@@ -45,7 +45,6 @@ if (!empty($bot->isEvents)) {
 	$bot->replyMessageNew	($bot->replyToken, 
 					"Your ID : ".$bot->userId
 					."\n"."Your Message : ".$bot->text
-					."\n"."Status : ".$bot->isSuccess()
 				);
 		
 	if ($bot->isSuccess()) {

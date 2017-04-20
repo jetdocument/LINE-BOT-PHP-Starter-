@@ -17,8 +17,8 @@ $result = curl_exec($ch);
 curl_close($ch);
 
 $obj = json_decode($result);
-echo $obj->{'channelId'}.'\r\n';
-echo $obj->{'mid'}.'\r\n';
+echo $obj->{'channelId'}."<br/>";
+echo $obj->{'mid'}."<br/>";
 
 $bot = new BOT_API($channelSecret, $access_token);
 	

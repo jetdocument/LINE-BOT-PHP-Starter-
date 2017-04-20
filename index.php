@@ -30,7 +30,7 @@ if (!empty($bot->isEvents)) {
 	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->events));
 	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->events));
 	#$bot->replyMessageNew($bot->replyToken, $bot->text);
-	$bot->replyMessageNew($bot->replyToken, $bot->userId);
+	$bot->replyMessageNew($bot->replyToken, "Your ID : ".$bot->userId."\n"."Your Policy : ".$bot->userType);
 	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->replyTroken));
 	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->timestamp)); 
 	

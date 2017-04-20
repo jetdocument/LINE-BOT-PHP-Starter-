@@ -40,6 +40,37 @@ $bot->verify(access_token);
 	
 if (!empty($bot->isEvents)) {
 
+	if ($bot->text == "getEvent") {
+		# code...
+		$bot->replyMessageNew($bot->replyToken, json_encode($bot->events));
+	} else {
+		# code...
+		try {
+	        $linkState = availableUrl($bot->text);
+		        if ($linkState == true) {
+
+		        	$bot->replyMessageNew	($bot->replyToken, 
+						"Your ID : ".$bot->userId
+						."\n"."Link UP"
+						."\n"."Your Link : ".$bot->text					
+						."\n"."Link IP : ".gethostbyname($bot->text)
+					);					
+				} else {
+
+					$bot->replyMessageNew	($bot->replyToken, 
+						"Your ID : ".$bot->userId
+						."\n"."Link DOWN"
+						."\n"."Your Link : ".$bot->text					
+						."\n"."Link IP : ".gethostbyname($bot->text)
+					);				
+				}
+
+		} catch (Exception $e) {
+		        
+		}
+	}
+	
+
 	function availableUrl($host, $port=80, $timeout=10) {
 
 	  $fp = fSockOpen($host, $port, $errno, $errstr, $timeout); 
@@ -47,29 +78,7 @@ if (!empty($bot->isEvents)) {
 	}
 
 	//Return "true" if the url is available, false if not.
-	try {
-	        $linkState = availableUrl($bot->text);
-	        if ($linkState == true) {
-
-	        	$bot->replyMessageNew	($bot->replyToken, 
-					"Your ID : ".$bot->userId
-					."\n"."Link UP"
-					."\n"."Your Link : ".$bot->text					
-					."\n"."Link IP : ".gethostbyname($bot->text)
-				);					
-			} else {
-
-				$bot->replyMessageNew	($bot->replyToken, 
-					"Your ID : ".$bot->userId
-					."\n"."Link DOWN"
-					."\n"."Your Link : ".$bot->text					
-					."\n"."Link IP : ".gethostbyname($bot->text)
-				);				
-			}
-
-	} catch (Exception $e) {
-	        
-	}	
+		
 	
 	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->events));
 	

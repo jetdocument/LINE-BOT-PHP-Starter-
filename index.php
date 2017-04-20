@@ -16,6 +16,9 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 $result = curl_exec($ch);
 curl_close($ch);
 
+$obj = json_decode($result);
+echo $obj->{'channelId'}."\n";
+echo $obj->{'mid'}."\n";
 echo $result;
 
 $bot = new BOT_API($channelSecret, $access_token);

@@ -30,10 +30,10 @@ if (!empty($bot->isEvents)) {
 	
 	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->events));
 	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->events));
-	#$bot->replyMessageNew($bot->replyToken, $bot->message);
-	$bot->replyMessageNew($bot->replyToken, json_encode($bot->source));
-	$bot->replyMessageNew($bot->replyToken, json_encode($bot->replyTroken));
-	$bot->replyMessageNew($bot->replyToken, json_encode($bot->timestamp)); 
+	$bot->replyMessageNew($bot->replyToken, $bot->message{'text'});
+	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->source));
+	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->replyTroken));
+	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->timestamp)); 
 	
 	if ($bot->isSuccess()) {
 		echo 'Succeeded!';

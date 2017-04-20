@@ -27,8 +27,7 @@ if (!empty($bot->isEvents)) {
 	#$bot_obj = json_decode($bot_data);
 	
 	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->events)); 
-	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->message)); 
-	$bot->replyMessageNew($bot->replyToken, $bot->userId);
+	$bot->replyMessageNew($bot->replyToken, json_encode($bot->message[replyToken])); 
 
 	if ($bot->isSuccess()) {
 		echo 'Succeeded!';

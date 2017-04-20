@@ -11,6 +11,18 @@ class BOT_API extends LINEBot {
      * Variable
      * ==================================================================================== */
 	
+    // reply body
+
+    // [
+    //     {
+    //         "type":"message",
+    //         "replyToken":"xx.xx",
+    //         "source":{"userId":"xx.xx","type":"user"},
+    //         "timestamp":1492669888038,
+    //         "message":{"type":"text","id":"xx.xx","text":"dd"}
+    //     }
+    // ]
+
     private $httpClient     = null;
     private $endpointBase   = null;
     private $channelSecret  = null;
@@ -26,6 +38,8 @@ class BOT_API extends LINEBot {
     public $text            = null;
     public $replyToken      = null;
     public $source          = null;
+    public $userId          = null;
+    public $userType        = null;
     public $message         = null;
     public $timestamp       = null;
 	
@@ -55,6 +69,8 @@ class BOT_API extends LINEBot {
                 $this->source     = (object) $event['source'];
                 $this->message    = (object) $event['message'];
                 $this->timestamp  = $event['timestamp'];
+                $this->userId     = $event['source']['userId'];
+                $this->userType   = $event['source']['type'];
 				
                 if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
                     $this->isText = true;

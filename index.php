@@ -28,9 +28,13 @@ if (!empty($bot->isEvents)) {
 	
 	#$bot_obj = json_decode($bot_data);
 	
-	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->events)); 
-	$bot->replyMessageNew($bot->replyToken, $bot->replyToken); 
-
+	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->events));
+	$bot->replyMessageNew($bot->replyToken, json_encode($bot->events));
+	$bot->replyMessageNew($bot->replyToken, json_encode($bot->message));
+	$bot->replyMessageNew($bot->replyToken, json_encode($bot->source));
+	$bot->replyMessageNew($bot->replyToken, json_encode($bot->replyTroken));
+	$bot->replyMessageNew($bot->replyToken, json_encode($bot->timestamp)); 
+	
 	if ($bot->isSuccess()) {
 		echo 'Succeeded!';
 		exit();

@@ -40,12 +40,40 @@ $bot = new BOT_API($channelSecret, $access_token);
 $bot->verify(access_token);
 	
 if (!empty($bot->isEvents)) {
+
+	function availableUrl($host, $port=80, $timeout=10) {
+
+	  $fp = fSockOpen($host, $port, $errno, $errstr, $timeout); 
+	  return $fp!=false;
+	}
+
+	//Return "true" if the url is available, false if not.
+	try {
+	        $result = availableUrl($bot->text);
+	        if ($result == true) {
+
+	        	$bot->replyMessageNew	($bot->replyToken, 
+					"Your ID : ".$bot->userId
+					."\n"."Link UP"
+					."\n"."Your Link : ".$bot->text					
+					."\n"."Link IP : ".gethostbyname($bot->text);
+				);					
+			} else {
+
+				$bot->replyMessageNew	($bot->replyToken, 
+					"Your ID : ".$bot->userId
+					."\n"."Link DOWN"
+					."\n"."Your Link : ".$bot->text					
+					."\n"."Link IP : ".gethostbyname($bot->text);
+				);				
+			}
+
+	} catch (Exception $e) {
+	        
+	}	
 	
 	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->events));
-	$bot->replyMessageNew	($bot->replyToken, 
-					"Your ID : ".$bot->userId
-					."\n"."Your Message : ".$bot->text
-				);
+	
 		
 	if ($bot->isSuccess()) {
 		echo 'Succeeded!';

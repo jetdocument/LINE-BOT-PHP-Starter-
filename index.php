@@ -31,7 +31,7 @@ if (!empty($bot->isEvents)) {
 	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->events));
 	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->events));
 	$message = json_decode($bot->message, true);
-	$bot->replyMessageNew($bot->replyToken, $message});
+	$bot->replyMessageNew($bot->replyToken, $message);
 	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->source));
 	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->replyTroken));
 	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->timestamp)); 

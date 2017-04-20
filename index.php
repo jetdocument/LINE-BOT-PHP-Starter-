@@ -34,7 +34,6 @@ $access_token  = 'lGIPn6XGSZmb1qYpU/kTWGADC/7keEWP0kI9ybaQjtRyaeyflX5b1QEIwcz3it
 #    public $response        = null;
 
 
-
 $bot = new BOT_API($channelSecret, $access_token);
 
 $bot->verify(access_token);
@@ -49,14 +48,14 @@ if (!empty($bot->isEvents)) {
 
 	//Return "true" if the url is available, false if not.
 	try {
-	        $result = availableUrl($bot->text);
-	        if ($result == true) {
+	        $linkState = availableUrl($bot->text);
+	        if ($linkState == true) {
 
 	        	$bot->replyMessageNew	($bot->replyToken, 
 					"Your ID : ".$bot->userId
 					."\n"."Link UP"
 					."\n"."Your Link : ".$bot->text					
-					."\n"."Link IP : ".gethostbyname($bot->text);
+					."\n"."Link IP : ".gethostbyname($bot->text)
 				);					
 			} else {
 
@@ -64,7 +63,7 @@ if (!empty($bot->isEvents)) {
 					"Your ID : ".$bot->userId
 					."\n"."Link DOWN"
 					."\n"."Your Link : ".$bot->text					
-					."\n"."Link IP : ".gethostbyname($bot->text);
+					."\n"."Link IP : ".gethostbyname($bot->text)
 				);				
 			}
 

@@ -16,16 +16,18 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 $result = curl_exec($ch);
 curl_close($ch);
 
-$obj = json_decode($result);
-echo $obj->{'channelId'}."<br/>";
-echo $obj->{'mid'}."<br/>";
+$curl_obj = json_decode($result);
+echo $curl_obj->{'channelId'}."<br/>";
+echo $curl_obj->{'mid'}."<br/>";
 
 $bot = new BOT_API($channelSecret, $access_token);
 	
 if (!empty($bot->isEvents)) {
-		
+	
+	#$bot_obj = json_decode($bot_data);
+	
 	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->events)); 
-	$bot->replyMessageNew($bot->replyToken, json_encode($bot->message)); 
+	#$bot->replyMessageNew($bot->replyToken, json_encode($bot->message)); 
 	$bot->replyMessageNew($bot->replyToken, $bot->userId);
 
 	if ($bot->isSuccess()) {

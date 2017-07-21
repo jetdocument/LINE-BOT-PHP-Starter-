@@ -67,7 +67,7 @@ class BOT_API extends LINEBot {
 			
             foreach ($events['events'] as $event) {
 
-				$this->eventType  = $event['type'];
+				$this->eventType  = $event['message']['type'];
                 $this->replyToken = $event['replyToken'];
                 $this->source     = (object) $event['source'];
                 $this->message    = (object) $event['message'];

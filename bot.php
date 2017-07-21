@@ -70,6 +70,7 @@ class BOT_API extends LINEBot {
                 $this->message    = (object) $event['message'];
                 $this->timestamp  = $event['timestamp'];
                 $this->userId     = $event['source']['userId'];
+                $this->groupId     = $event['source']['groupId'];
                 $this->userType   = $event['source']['type'];
 				
                 if ($event['type'] == 'message' && $event['message']['type'] == 'text') {

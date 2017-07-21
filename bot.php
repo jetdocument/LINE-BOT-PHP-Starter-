@@ -37,6 +37,7 @@ class BOT_API extends LINEBot {
 	
     public $text            = null;
     public $replyToken      = null;
+    public $eventType       = null;
     public $source          = null;
     public $userId          = null;
     public $groupId         = null;
@@ -65,7 +66,8 @@ class BOT_API extends LINEBot {
             $this->events   = $events['events'];
 			
             foreach ($events['events'] as $event) {
-				
+
+				$this->eventType  = $event['type'];
                 $this->replyToken = $event['replyToken'];
                 $this->source     = (object) $event['source'];
                 $this->message    = (object) $event['message'];

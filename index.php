@@ -40,9 +40,42 @@ $bot->verify(access_token);
 	
 if (!empty($bot->isEvents)) {
 
-	$bot->replyMessageNew( $bot->replyToken, $bot->eventType);
-
-	
+	switch ($bot->eventType) {
+    case "text":
+    	if ($bot->text == "getEvent") {
+    		# code...
+    	} else if ($bot->text == "getId") {
+    		# code...
+    		if ($bot->userType == "group") {
+    			# code...
+    			$bot->sendMessageNew($bot->userId, $bot->groupId);
+    		} else {
+    			# code...
+    			$bot->replyMessageNew( $bot->replyToken, $bot->userId);
+    		}
+    		
+    	} else if ($bot->text == "help"  || $bot->text == "?") {
+    		# code...
+    		$bot->replyMessageNew( $bot->replyToken, "Command : getEvent, getId");
+    	} else {
+    		# code...
+    	}
+    	
+        $bot->replyMessageNew( $bot->replyToken, $bot->eventType);
+        break;
+    case "sticker":
+        $bot->replyMessageNew( $bot->replyToken, json_encode($bot->events));
+        break;
+    case "image":
+        $bot->replyMessageNew( $bot->replyToken, json_encode($bot->events));
+        break;
+    case "video":
+        $bot->replyMessageNew( $bot->replyToken, json_encode($bot->events));
+        break;
+    ...
+    default:
+        
+}
 
 	// if ($bot->text == "getEvent") {
 	// 	# code...

@@ -61,7 +61,7 @@ if (!empty($bot->isEvents)) {
     		# code...
     	}
     	
-        $bot->replyMessageNew( $bot->replyToken, $bot->eventType);
+        
         break;
     case "sticker":
         $bot->replyMessageNew( $bot->replyToken, json_encode($bot->events));
@@ -72,7 +72,7 @@ if (!empty($bot->isEvents)) {
     case "video":
         $bot->replyMessageNew( $bot->replyToken, json_encode($bot->events));
         break;
-    ...
+    
     default:
         
 }

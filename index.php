@@ -40,41 +40,45 @@ $bot->verify(access_token);
 	
 if (!empty($bot->isEvents)) {
 
-	if ($bot->text == "getEvent") {
-		# code...
-		$bot->replyMessageNew( $bot->replyToken, json_encode($bot->events).$bot->$userType);
-	} else if ($bot->text == "getgroupId") {
-		$bot->replyMessageNew( $bot->replyToken, $bot->groupId);
-	} else if ($bot->text == "getuserType") {
-		$bot->replyMessageNew( $bot->replyToken, $bot->userType);
-	} else {
-		# code...
-			function availableUrl($host, $port=80, $timeout=10) {
-			  $fp = fSockOpen($host, $port, $errno, $errstr, $timeout); 
-			  return $fp!=false;
-			}
+	$bot->replyMessageNew( $bot->replyToken, $bot->eventType);
+
+	
+
+	// if ($bot->text == "getEvent") {
+	// 	# code...
+	// 	$bot->replyMessageNew( $bot->replyToken, json_encode($bot->events).$bot->$userType);
+	// } else if ($bot->text == "getgroupId") {
+	// 	$bot->replyMessageNew( $bot->replyToken, $bot->groupId);
+	// } else if ($bot->text == "getuserType") {
+	// 	$bot->replyMessageNew( $bot->replyToken, $bot->userType);
+	// } else {
+	// 	# code...
+	// 		function availableUrl($host, $port=80, $timeout=10) {
+	// 		  $fp = fSockOpen($host, $port, $errno, $errstr, $timeout); 
+	// 		  return $fp!=false;
+	// 		}
 		
-	        $linkState = availableUrl($bot->text);
+	//         $linkState = availableUrl($bot->text);
 	        
-	        if ($linkState == true) {
+	//         if ($linkState == true) {
 
-	        	$bot->replyMessageNew	($bot->replyToken, 
-					"Your ID : ".$bot->userId
-					."\n"."Link UP"
-					."\n"."Your Link : ".$bot->text					
-					."\n"."Link IP : ".gethostbyname($bot->text)
-				);					
-			} else {
+	//         	$bot->replyMessageNew	($bot->replyToken, 
+	// 				"Your ID : ".$bot->userId
+	// 				."\n"."Link UP"
+	// 				."\n"."Your Link : ".$bot->text					
+	// 				."\n"."Link IP : ".gethostbyname($bot->text)
+	// 			);					
+	// 		} else {
 
-				$bot->replyMessageNew	($bot->replyToken, 
-					"Your ID : ".$bot->userId
-					."\n"."Link DOWN"
-					."\n"."Your Link : ".$bot->text					
-					."\n"."Link IP : ".gethostbyname($bot->text)
-				);				
-			}
+	// 			$bot->replyMessageNew	($bot->replyToken, 
+	// 				"Your ID : ".$bot->userId
+	// 				."\n"."Link DOWN"
+	// 				."\n"."Your Link : ".$bot->text					
+	// 				."\n"."Link IP : ".gethostbyname($bot->text)
+	// 			);				
+	// 		}
 		
-	}	
+	// }	
 
 	
 

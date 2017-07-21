@@ -45,6 +45,8 @@ if (!empty($bot->isEvents)) {
 		$bot->replyMessageNew( $bot->replyToken, json_encode($bot->events).$bot->$userType);
 	} else if ($bot->text == "getgroupId") {
 		$bot->replyMessageNew( $bot->replyToken, $bot->groupId);
+	} else if ($bot->text == "getuserType") {
+		$bot->replyMessageNew( $bot->replyToken, $bot->userType);
 	} else {
 		# code...
 			function availableUrl($host, $port=80, $timeout=10) {

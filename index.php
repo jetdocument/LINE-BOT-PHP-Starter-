@@ -42,9 +42,9 @@ if (!empty($bot->isEvents)) {
 
 	if ($bot->text == "getEvent") {
 		# code...
-		$bot->replyMessageNew($bot->replyToken, json_encode($bot->events).$bot->$userType);
+		$bot->replyMessageNew( $bot->replyToken, json_encode($bot->events).$bot->$userType);
 	} else if ($bot->text == "getgroupId") {
-		$bot->replyMessageNew($bot->replyToken, $bot->groupId));
+		$bot->replyMessageNew( $bot->replyToken, $bot->groupId);
 	} else {
 		# code...
 			function availableUrl($host, $port=80, $timeout=10) {

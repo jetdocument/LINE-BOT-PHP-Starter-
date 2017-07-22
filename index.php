@@ -42,19 +42,19 @@ if (!empty($bot->isEvents)) {
 
 	switch ($bot->eventType) {
     case "text":
-    	if ($bot->text == "getEvent") {
+    	if ( strtolower($bot->text) == "getevent") {
     		# code...
-    	} else if ($bot->text == "getId") {
+    	} else if ( strtolower($bot->text) == "getid") {
     		# code...
-    		if ($bot->userType == "group") {
+    		if ( strtolower($bot->userType) == "group") {
     			# code...
-    			$bot->sendMessageNew($bot->userId, $bot->groupId);
+    			$bot->sendMessageNew( $bot->userId, "Group TokenID : ".$bot->groupId);
     		} else {
     			# code...
-    			$bot->replyMessageNew( $bot->replyToken, $bot->userId);
+    			$bot->replyMessageNew( $bot->replyToken, "Your TokenID : ".$bot->userId);
     		}
     		
-    	} else if ($bot->text == "help"  || $bot->text == "?") {
+    	} else if ( strtolower($bot->text) == "help"  || $bot->text == "?" ) {
     		# code...
     		$bot->replyMessageNew( $bot->replyToken, "Command : getEvent, getId");
     	} else {
@@ -64,13 +64,13 @@ if (!empty($bot->isEvents)) {
         
         break;
     case "sticker":
-        $bot->replyMessageNew( $bot->replyToken, json_encode($bot->events));
+        $bot->replyMessageNew( $bot->replyToken, $bot->message);
         break;
     case "image":
-        $bot->replyMessageNew( $bot->replyToken, json_encode($bot->events));
+        // $bot->replyMessageNew( $bot->replyToken, json_encode($bot->events));
         break;
     case "video":
-        $bot->replyMessageNew( $bot->replyToken, json_encode($bot->events));
+        // $bot->replyMessageNew( $bot->replyToken, json_encode($bot->events));
         break;
     
     default:

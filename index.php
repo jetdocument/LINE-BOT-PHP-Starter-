@@ -62,12 +62,24 @@ if (!empty($bot->isEvents)) {
     		
     	} else if ( strtolower($bot->text) == "help"  || $bot->text == "?" ) {
     		# code...
-    		$bot->replyMessageNew( $bot->replyToken, 
+    		if (strtolower($bot->userType) == "group") {
+    			# code...
+    			$bot->replyMessageNew( $bot->replyToken, 
     			"Hi"
     			."\n"."Welcome to Bacom Internetwork");
-    		$bot->sendMessageNew( $bot->userId, "System can action only command below");
-    		$bot->sendMessageNew( $bot->userId, "1 : Signup");
-    		$bot->sendMessageNew( $bot->userId, "Link to signup : https://bacom.dyndns.org:4433");
+	    		$bot->sendMessageNew( $bot->groupId, "System can action only command below");
+	    		$bot->sendMessageNew( $bot->groupId, "1 : Signup");
+	    		$bot->sendMessageNew( $bot->groupId, "Link to signup : https://bacom.dyndns.org:4433");
+    		} else {
+    			# code...
+    			$bot->replyMessageNew( $bot->replyToken, 
+    			"Hi"
+    			."\n"."Welcome to Bacom Internetwork");
+	    		$bot->sendMessageNew( $bot->userId, "System can action only command below");
+	    		$bot->sendMessageNew( $bot->userId, "1 : Signup");
+	    		$bot->sendMessageNew( $bot->userId, "Link to signup : https://bacom.dyndns.org:4433");
+    		}    		
+    		
     	} else {
     		# code...
     	}

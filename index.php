@@ -44,21 +44,30 @@ if (!empty($bot->isEvents)) {
     case "text":
     	if ( strtolower($bot->text) == "getevent") {
     		# code...
-    	} else if ( strtolower($bot->text) == "getid") {
+    		$bot->replyMessageNew( $bot->replyToken, json_encode($bot->events));
+    	} else if ( strtolower($bot->text) == "signup") {
     		# code...
     		if ( strtolower($bot->userType) == "group") {
     			# code...
-    			$bot->replyMessageNew( $bot->replyToken, "Thank you. It is in your private box");
-    			$bot->sendMessageNew( $bot->userId, "Group TokenID : ".$bot->groupId);
-    			$bot->sendMessageNew( $bot->userId, "Group TokenID : ".$bot->groupId);
+    			$bot->replyMessageNew( $bot->replyToken, "Go to your private box!");
+    			$bot->sendMessageNew( $bot->userId, "Group TokenID : ");
+    			$bot->sendMessageNew( $bot->userId, $bot->groupId);
+    			$bot->sendMessageNew( $bot->userId, "Link to signup : https://bacom.dyndns.org:4433");
     		} else {
     			# code...
-    			$bot->replyMessageNew( $bot->replyToken, "Your TokenID : ".$bot->userId);
+    			$bot->replyMessageNew( $bot->replyToken, "Your TokenID : ");
+    			$bot->sendMessageNew( $bot->userId, $bot->userId);
+    			$bot->sendMessageNew( $bot->userId, "Link to signup : https://bacom.dyndns.org:4433");
     		}
     		
     	} else if ( strtolower($bot->text) == "help"  || $bot->text == "?" ) {
     		# code...
-    		$bot->replyMessageNew( $bot->replyToken, "Command : getEvent, getId");
+    		$bot->replyMessageNew( $bot->replyToken, 
+    			"Hi"
+    			."\n"."Welcome to Bacom Internetwork");
+    		$bot->sendMessageNew( $bot->userId, "System can action only command below");
+    		$bot->sendMessageNew( $bot->userId, "1 : Signup");
+    		$bot->sendMessageNew( $bot->userId, "Link to signup : https://bacom.dyndns.org:4433");
     	} else {
     		# code...
     	}

@@ -64,7 +64,7 @@ if (!empty($bot->isEvents)) {
         
         break;
     case "sticker":
-        $bot->replyMessageNew( $bot->replyToken, $bot->message);
+        $bot->replyMessageNew( $bot->replyToken, json_encode($bot->message));
         break;
     case "image":
         // $bot->replyMessageNew( $bot->replyToken, json_encode($bot->events));
